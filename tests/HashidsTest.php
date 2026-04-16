@@ -14,6 +14,7 @@ namespace Hashids\Tests;
 use Hashids\Hashids;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\RequiresFunction;
 use PHPUnit\Framework\TestCase;
 
 class HashidsTest extends TestCase
@@ -317,9 +318,7 @@ class HashidsTest extends TestCase
         $this->assertEquals($hash, $hashids->encode($numbers));
     }
 
-    /**
-     * @requires function bcscale
-     */
+    #[RequiresFunction('bcscale')]
     public function testBehaviourForDifferentBCMathAccuracy()
     {
         bcscale(2);
